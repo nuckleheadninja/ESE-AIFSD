@@ -38,7 +38,7 @@ const AddEmployee = () => {
                 }
             };
 
-            await axios.post('http://localhost:5000/api/employees', payload, config);
+            await axios.post('https://ese-backend-7gyv.onrender.com/api/employees', payload, config);
             toast.success('Employee registered successfully!');
             navigate('/');
         } catch (error) {

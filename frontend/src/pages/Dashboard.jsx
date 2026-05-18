@@ -28,9 +28,9 @@ const Dashboard = () => {
             setLoading(true);
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
             
-            let url = 'http://localhost:5000/api/employees';
+            let url = 'https://ese-backend-7gyv.onrender.com/api/employees';
             if (filterDept) {
-                url = `http://localhost:5000/api/employees/search?department=${filterDept}`;
+                url = `https://ese-backend-7gyv.onrender.com/api/employees/search?department=${filterDept}`;
             }
             
             const res = await axios.get(url, config);
@@ -52,7 +52,7 @@ const Dashboard = () => {
         if (window.confirm('Are you sure you want to delete this employee?')) {
             try {
                 const config = { headers: { Authorization: `Bearer ${user.token}` } };
-                await axios.delete(`http://localhost:5000/api/employees/${id}`, config);
+                await axios.delete(`https://ese-backend-7gyv.onrender.com/api/employees/${id}`, config);
                 toast.success('Employee deleted successfully');
                 setEmployees(employees.filter(emp => emp._id !== id));
             } catch (error) {
@@ -67,7 +67,7 @@ const Dashboard = () => {
         setAiRecommendation('');
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            const res = await axios.post('http://localhost:5000/api/ai/recommend', { employeeId: id }, config);
+            const res = await axios.post('https://ese-backend-7gyv.onrender.com/api/ai/recommend', { employeeId: id }, config);
             setAiRecommendation(res.data.recommendation);
         } catch (error) {
             setAiRecommendation('Failed to fetch AI recommendation. Please check if your API key is correctly configured in the backend.');
@@ -81,7 +81,7 @@ const Dashboard = () => {
         e.preventDefault();
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            const res = await axios.put(`http://localhost:5000/api/employees/${editEmployee._id}`, editEmployee, config);
+            const res = await axios.put(`https://ese-backend-7gyv.onrender.com/api/employees/${editEmployee._id}`, editEmployee, config);
             toast.success('Employee updated successfully');
             setEmployees(employees.map(emp => emp._id === editEmployee._id ? res.data : emp));
             setEditEmployee(null);
