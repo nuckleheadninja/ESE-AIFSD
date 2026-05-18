@@ -38,7 +38,7 @@ const getAIRecommendation = async (req, res, next) => {
         const apiUrl = 'https://openrouter.ai/api/v1/chat/completions'; // You can change to OpenAI URL if needed
 
         const aiResponse = await axios.post(apiUrl, {
-            model: "google/gemini-2.5-pro", // Changed to Gemini 2.5 Pro via OpenRouter
+            model: "deepseek/deepseek-v4-flash:free",
             messages: [{ role: "user", content: prompt }]
         }, {
             headers: {
